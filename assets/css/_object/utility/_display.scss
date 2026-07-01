@@ -3,33 +3,70 @@
 /* ------------------------------------------------------------
     display
 ------------------------------------------------------------ */
-.u-pc {
-	display: block;
-	@include bp(sm){
-		display: none;
-	}
+// .u-pc {
+// 	display: block;
+// 	@include bp(sm){
+// 		display: none;
+// 	}
+// }
+// .u-sp {
+// 	display: none;
+// 	@include bp(sm){
+// 		display: block;
+// 	}
+// }
+
+// .u-pci {
+// 	display: inline-block;
+// 	@include bp(sm){
+// 		display: none;
+// 	}
+// }
+// .u-spi {
+// 	display: none;
+// 	@include bp(sm){
+// 		display: inline-block;
+// 	}
+// }
+
+// .u-nolink {
+// 	cursor: default;
+// 	pointer-events: none;
+// }
+
+.u-sronly {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
 }
-.u-sp {
-	display: none;
+
+
+.u-sp-block {
+    display: none!important;
 	@include bp(sm){
-		display: block;
+		display:block!important
 	}
 }
 
-.u-pci {
-	display: inline-block;
+.u-pc-block {
+    display: block!important;
 	@include bp(sm){
-		display: none;
-	}
-}
-.u-spi {
-	display: none;
-	@include bp(sm){
-		display: inline-block;
+		display:none!important
 	}
 }
 
-.u-nolink {
-	cursor: default;
-	pointer-events: none;
+.u-img-responsive {
+    display: inline-block;
+    max-width: 100%;
+    height: auto
+}
+
+.u-p-r {
+    position: relative!important
 }

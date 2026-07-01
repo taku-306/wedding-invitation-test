@@ -1,0 +1,56 @@
+@charset "utf-8";
+@use "_setting" as *;
+
+html {
+    font-size: 62.5%
+}
+
+body {
+    color: $color_pic_black;
+    font-size: 1rem;
+    font-family: $f_sans;
+    position: relative;
+    font-weight: 400;
+    -webkit-font-kerning: normal;
+    font-kerning: normal;
+    font-feature-settings: "palt";
+    -ms-font-feature-settings: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1;
+    background: $color_pic_green;
+    word-wrap: break-word;
+    vertical-align: baseline;
+    white-space: normal;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    box-sizing: border-box
+}
+
+h1,h2,h3,h4,h5,h6 {
+    font-weight: 400;
+    margin: 0
+}
+
+a {
+    color: $color_pic_black;
+    transition: opacity 0.3s ease
+}
+
+a:hover {
+    color: $color_pic_black;
+    text-decoration: none
+}
+
+a:focus {
+    text-decoration: none
+}
+
+:active,:focus,:hover,:visited,a,a:active,a:focus,a:hover,a:visited {
+    outline: none!important;
+    text-decoration: none
+}

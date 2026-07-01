@@ -1,23 +1,1384 @@
-<!DOCTYPE html>
-<html lang="jp">
-<head>
+<!doctype html>
+<html lang="ja">
 
+<head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>招待状</title>
-    <meta name="robots" content="noindex, nofollow" >
-    <link href="./assets/css/common/common.css" rel="stylesheet">
-    <link href="./assets/css/top/style.css" rel="stylesheet">
-    <script src="./sets/js/inc.js"></script>
+    <meta property="og:locale" content="ja_JP">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="日常を映画に、暮らしをピクニックに。思い描いた憧れを、ひとつずつ叶えていく家。PICNIC MOTEL House Projectは「日常の景色を、デザインする暮らし」を提案します。">
+    <link rel="canonical" href="https://picnic-motel-house.dolive.media/">
+    <meta name="theme-color" content="#678666">
+    <meta name="robots" content="noindex, nofollow">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Marcellus&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Zen+Old+Mincho&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Marcellus&family=Noto+Sans+JP:wght@400;500;700&family=Zen+Old+Mincho&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700" rel="stylesheet">
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="./assets/css/common/common.css">
+    <link rel="stylesheet" href="./assets/css/top/style.css">
+    <link rel="stylesheet" href="./assets/css/top/override.css?ver=250716">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+
+    <script src="./assets/js/scripts.js?ver=250716" defer></script>
+    <script src="./assets/js/plugin.js?ver=250716" defer></script>
+
+    <script src="./assets/js/inc.js"></script>
+
+    <script>
+        var noise = (function () {
+            var module = {};
+            var grad3 = [[1, 1, 0], [-1, 1, 0], [1, -1, 0], [-1, -1, 0],
+                [1, 0, 1], [-1, 0, 1], [1, 0, -1], [-1, 0, -1],
+                [0, 1, 1], [0, -1, 1], [0, 1, -1], [0, -1, -1]];
+            var p = [];
+            for (var i = 0; i < 256; i++) {
+                p[i] = Math.floor(Math.random() * 256);
+            }
+            var perm = [];
+            for (var i = 0; i < 512; i++) {
+                perm[i] = p[i & 255];
+            }
+            function fade(t) {
+                return t * t * t * (t * (t * 6 - 15) + 10);
+            }
+            function lerp(a, b, t) {
+                return (1 - t) * a + t * b;
+            }
+            function grad(hash, x, y) {
+                var h = hash & 7;
+                var u = h < 4 ? x : y;
+                var v = h < 4 ? y : x;
+                return ((h & 1) ? -u : u) + ((h & 2) ? -2.0 * v : 2.0 * v);
+            }
+            module.seed = function (seed) {
+                if (seed > 0 && seed < 1) {
+                    seed *= 65536;
+                }
+                seed = Math.floor(seed);
+                if (seed < 256) {
+                    seed |= seed << 8;
+                }
+                for (var i = 0; i < 256; i++) {
+                    var v;
+                    if (i & 1) {
+                        v = p[i] ^ (seed & 255);
+                    } else {
+                        v = p[i] ^ ((seed >> 8) & 255);
+                    }
+                    perm[i] = perm[i + 256] = v;
+                }
+            };
+            module.perlin2 = function (x, y) {
+                var X = Math.floor(x), Y = Math.floor(y);
+                x = x - X; y = y - Y;
+                X = X & 255; Y = Y & 255;
+                var n00 = grad(perm[X + perm[Y]], x, y);
+                var n01 = grad(perm[X + perm[Y + 1]], x, y - 1);
+                var n10 = grad(perm[X + 1 + perm[Y]], x - 1, y);
+                var n11 = grad(perm[X + 1 + perm[Y + 1]], x - 1, y - 1);
+                var u = fade(x);
+                var v = fade(y);
+                return lerp(
+                    lerp(n00, n10, u),
+                    lerp(n01, n11, u),
+                    v);
+            };
+            return module;
+        })();
+    </script>
 </head>
 
-<body>
-    <main>
-    <p>テスト</p>
-    <img src="./assets/img/top/main_01.jpg" alt="">
+<body id="top" class="top">
+
+    <header class="l-header">
+    <div class="l-header-logo">
+        <a href="#top" class="js-scroll">
+            <img src="./assets/img/top/logo.png" class="u-img-responsive" style="opacity: 1;">
+        </a>
+    </div>
+    </header>
+
+    <div class="l-gnav" style="background-image: url(./assets/img/pic/menu_bg.webp);">
+        <div class="l-gnav-logo">
+            <a href="https://dolive.media/" target="_blank">
+                <img src="./assets/img/top/logo.png" class="u-img-responsive" style="opacity: 1;">
+            </a>
+        </div>
+        <!-- <div class="l-gnav-logo-2">
+            <img src="./assets/img/top/logo.png" class="u-img-responsive" style="opacity: 1;">
+        </div> -->
+        <div class="l-gnav__body">
+            <div class="l-gnav__close">
+                <div class="l-gnav__btn-circle">
+                    <svg width="101" height="94" viewBox="0 0 101 94" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path id="circlePath5" d="M50.5 93.5C22.8513 93.5 0.5 72.648 0.5 47
+                            C0.5 21.352 22.8513 0.5 50.5 0.5
+                            C78.1487 0.5 100.5 21.352 100.5 47
+                            C100.5 72.648 78.1487 93.5 50.5 93.5Z" stroke="#D6C0A6" fill="#F4E3D0" />
+                    </svg>
+                    <div class="l-gnav__btn-text">CLOSE</div>
+                </div>
+            </div>
+            <div class="l-gnav__ttl">MENU</div>
+            <div class="l-gnav__list">
+                <div class="l-gnav__item">
+                    <a href="#concept" class="js-scroll">
+                    <p>CONCEPT</p>
+                    </a>
+                </div>
+                <div class="l-gnav__item">
+                    <a href="#product" class="js-scroll">
+                    <p>PRODUCT</p>
+                    </a>
+                </div>
+                <div class="l-gnav__item">
+                    <a href="#spec" class="js-scroll">
+                    <p>SPEC</p>
+                    </a>
+                </div>
+                <div class="l-gnav__item">
+                    <a href="#order" class="js-scroll">
+                    <p>HOW TO ORDER</p>
+                    </a>
+                </div>
+                <div class="l-gnav__item">
+                    <a href="#topics" class="js-scroll">
+                    <p>TOPICS</p>
+                    </a>
+                </div>
+            </div>
+
+            <div class="l-gnav__flowbtn">
+                <div class="c-flowbtn__list">
+                    <div class="c-flowbtn__item c-flowbtn__item--1">
+                        <a href="https://house.dolive.media/shop/" target="_blank">
+                            お近くの取扱店に<br>相談する
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="l-gnav__copy">A lifestyle that shapes the scenery of everyday life through design</div>
+        </div>
+    </div>
+
+    <div class="l-gnav__btn">
+        <div class="l-gnav__btn-circle">
+            <svg width="101" height="94" viewBox="0 0 101 94" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path id="circlePath" d="M50.5 93.5C22.8513 93.5 0.5 72.648 0.5 47
+                        C0.5 21.352 22.8513 0.5 50.5 0.5
+                        C78.1487 0.5 100.5 21.352 100.5 47
+                        C100.5 72.648 78.1487 93.5 50.5 93.5Z" stroke="#F4E3D0" fill="none" />
+            </svg>
+            <div class="l-gnav__btn-text">MENU</div>
+        </div>
+    </div>
+
+    <main id="main" class="l-main is-home">
+        <div class="c-logo">
+            <a href="https://dolive.media/" target="_blank">
+            <img src="./assets/img/top/logo.png" class="u-img-responsive" style="opacity: 1;">
+            </a>
+        </div>
+
+        <div id="percent">0</div>
+        <div id="kv" class="p-kv">
+            <div class="p-kv__wrapper">
+                <div class="c-preloader">
+                    <div id="loading-screen">
+                        <div class="c-preloader__logo">
+                            <img src="./assets/img/top/logo.png" class="u-img-responsive" style="opacity: 1;">
+                        </div>
+                        <!-- <div class="c-preloader__ttl">
+                            produced by
+                            <div class="c-preloader__ttl-logo">
+                                <img src="./assets/img/top/logo.png" class="u-img-responsive" style="opacity: 1;">
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+                <div class="p-kv__body">
+                    <div class="p-kv__logo">
+                        <img src="./assets/img/top/logo.png" class="u-img-responsive">
+                    </div>
+                    <div class="p-kv__produce">
+                        <div class="p-kv__produce-inner">
+                            <span>celebration day</span>
+                            <img src="./assets/img/top/09.23.png" class="u-img-responsive">
+                        </div>
+                    </div>
+
+                    <div class="p-kv__img-mask">
+                        <svg viewBox="0 0 739 790" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                            <defs>
+                            <mask id="arch-mask" maskUnits="userSpaceOnUse">
+                                <rect width="739" height="790" fill="black" />
+                                <path class="mask-shape" d="M0 369.5C0 165.431 165.431 0 369.5 0
+                                                    C573.569 0 739 165.431 739 369.5V790H0V369.5Z" fill="white" stroke="#111" />
+                            </mask>
+                            </defs>
+                            <image href="./assets/img/top/main_01.jpg" width="100%" height="100%" x="-00%" y="-00%"
+                                preserveAspectRatio="xMidYMid slice" mask="url(#arch-mask)" />
+                        </svg>
+                    </div>
+                    <!-- ===== TECHNIQUE: text following the arch via <textPath> ===== -->
+                    <div class="p-kv__img-mask-text">
+                        <div class="p-kv__img-mask-text-inner">
+                            <svg width="100%" height="100%" viewBox="0 0 739 790" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 369.5
+                                                C0 165.431 165.431 0 369.5 0
+                                                C573.569 0 739 165.431 739 369.5
+                                                V790 H0 V369.5Z" fill="none" />
+                            <path id="outerPathOutside" d="M-10 790
+                                                V369.5
+                                                C-10 155 155 -10 369.5 -10
+                                                C584 -10 749 155 749 369.5
+                                                V790" fill="none" stroke="none" stroke-width="1" />
+                            <text font-size="18" fill="#F4E3D0" font-family="sans-serif">
+                                <textPath href="#outerPathOutside" startOffset="100%">
+                                <tspan dy="-5">
+                                    A celebration of ordinary days made extraordinary
+                                </tspan>
+                                </textPath>
+                            </text>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="c-scroll">
+                        <div class="c-scroll__inner">
+                            <div class="c-scroll__text">
+                            <!-- [SVG] Decorative "scroll" cursive copy, 93x32. Replace with your own asset or plain text. -->
+                            <svg width="93" height="32" viewBox="0 0 93 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="scroll"></svg>
+                            </div>
+                            <div class="c-scroll__icon">
+                            <svg width="44" height="35" viewBox="0 0 44 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                d="M22.0005 34.5002C10.0136 34.5002 0.500489 26.7884 0.50049 17.5002C0.500492 8.21206 10.0136 0.500241 22.0005 0.500242C33.9874 0.500244 43.5005 8.21207 43.5005 17.5002C43.5005 26.7884 33.9874 34.5002 22.0005 34.5002Z"
+                                stroke="#F4E3D0" />
+                            </svg>
+                            <div class="c-scroll__icon-inner js-loop">
+                                <div class="c-scroll__icon-back">
+                                <svg width="8" height="10" viewBox="0 0 8 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                    d="M3.69231 10C2.91738 8.46098 1.68661 7.03035 0 5.70809V4.57009C0.729345 4.89523 1.36752 5.22038 1.91453 5.54552C2.46154 5.84899 2.91738 6.15246 3.28205 6.45592V0H4.71795V6.45592C5.10541 6.15246 5.57265 5.84899 6.11966 5.54552C6.66667 5.22038 7.29345 4.89523 8 4.57009V5.70809C6.33618 7.03035 5.10541 8.46098 4.30769 10H3.69231Z"
+                                    fill="#F4E3D0" />
+                                </svg>
+                                </div>
+                                <div class="c-scroll__icon-front">
+                                <svg width="8" height="10" viewBox="0 0 8 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                    d="M3.69231 10C2.91738 8.46098 1.68661 7.03035 0 5.70809V4.57009C0.729345 4.89523 1.36752 5.22038 1.91453 5.54552C2.46154 5.84899 2.91738 6.15246 3.28205 6.45592V0H4.71795V6.45592C5.10541 6.15246 5.57265 5.84899 6.11966 5.54552C6.66667 5.22038 7.29345 4.89523 8 4.57009V5.70809C6.33618 7.03035 5.10541 8.46098 4.30769 10H3.69231Z"
+                                    fill="#F4E3D0" />
+                                </svg>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <section id="intro" class="p-intro">
+                    <div class="p-intro__body">
+                        <h2 class="p-ttl">
+                            <span class="u-sronly">Message</span>
+                            <img src="./assets/img/top/Message.png" alt="">
+                        </h2>
+                        <div class="p-intro__body-bottom">
+                            <div class="p-intro__body-description js-onscreen">
+                                このたび私たちは<br>
+                                結婚式を挙げることとなりました<br>
+                                <br>
+                                日頃よりお世話になっている皆様に<br>
+                                感謝の気持ちをお伝えしたく<br>
+                                ささやかながらご披露の宴を<br>
+                                催したいと思っております<br>
+                                ご多用のところ<br>
+                                誠に恐縮ではございますが<br>
+                                ぜひご出席いただけますと幸いです。<br>
+                                <br>
+                                皆様とともに<br>
+                                大切な一日を過ごせることを<br>
+                                心より楽しみにしております
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="p-intro__img">
+                        <div class="p-intro__img-list">
+                            <div class="p-intro__img-item p-intro__img-item--1"
+                                style="background-image: url(./assets/img/top/mes_01.jpg);"></div>
+                            <div class="p-intro__img-item p-intro__img-item--2"
+                                style="background-image: url(./assets/img/top/mes_02.jpg);"></div>
+                            <div class="p-intro__img-item p-intro__img-item--3"
+                                style="background-image: url(./assets/img/top/mes_03.jpg);"></div>
+                            <div class="p-intro__img-item p-intro__img-item--4"
+                                style="background-image: url(./assets/img/top/mes_04.jpg);"></div>
+                        </div>
+                    </div>
+                    <!-- <div class="p-intro__caption">※写真はイメージになります</div> -->
+                </section>
+                <div class="p-kv__space"></div>
+                <div id="concept" class="p-intro__space"></div>
+            </div>
+        </div>
+        <div id="content" class="l-content">
+            <div class="l-content__inner">
+
+                <!-- ===== TECHNIQUE: mask-reveal floor-plan image + tabbed/modal floor switcher ===== -->
+                <div id="spec" class="p-spec">
+                    <div class="p-spec__inner">
+                    <div class="p-heading p-heading--spec js-onscreen">
+                        PROFILE
+                    </div>
+                    <div class="p-spec__row">
+                        <div class="p-spec__left">
+                        <div class="p-spec__img js-onscreen">
+                            <img src="./assets/img/top/pro_01.jpg" class="u-img-responsive">
+                        </div>
+                        <div class="p-spec__ttl">TAKUMI</div>
+                        <p class="p-spec__lead">
+                            千葉県船橋市出身<br>
+                            趣味は園芸・テニス・ジョギング<br>
+                            細かな作業や絵を描くことが得意<br>
+                            植物を丁寧に育てることが日課です
+                        </p>
+                        </div>
+                        <div class="p-spec__left">
+                        <div class="p-spec__img js-onscreen">
+                            <img src="./assets/img/top/pro_02.jpg" class="u-img-responsive">
+                        </div>
+                        <div class="p-spec__ttl">CHIHIRO</div>
+                        <p class="p-spec__lead">
+                            ニュージーランド産まれ<br>
+                            趣味は断捨離・インテリア・ゲーム<br>
+                            収納やルームレイアウトが得意な<br>
+                            生粋のお部屋づくりマニア
+                        </p>
+                        </div>
+                        <!-- <div class="p-spec__right">
+                        <div class="p-spec__floor">
+                            <div class="p-spec__floor-item p-spec__floor-item--1 is-active">
+                            <div class="p-spec__floor-num">1F</div>
+                            <img src="./assets/img/pic/floor_1f.png" class="u-img-responsive u-pc-block">
+                            <img src="./assets/img/pic/floor_1f_sp.png" class="u-img-responsive u-sp-block">
+                            <div class="p-spec__icon p-spec__icon--1 u-sp-block">
+                                <svg width="39" height="39" viewBox="0 0 39 39" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="19.5" cy="19.5" r="19.5" fill="#678666" />
+                                <path
+                                    d="M28.095 29L22.0683 22.9742C21.4274 23.5202 20.6904 23.9428 19.8572 24.2418C19.024 24.5409 18.1865 24.6904 17.3448 24.6904C15.2922 24.6904 13.5549 23.9799 12.1329 22.559C10.711 21.1381 10 19.4014 10 17.349C10 15.2967 10.7101 13.5592 12.1304 12.1365C13.5506 10.7139 15.2871 10.0017 17.3397 10C19.3923 9.99829 21.1304 10.7092 22.5541 12.1327C23.9778 13.5562 24.6896 15.2937 24.6896 17.3452C24.6896 18.2355 24.532 19.0972 24.2166 19.9303C23.9013 20.7634 23.4868 21.476 22.9733 22.0681L29 28.0926L28.095 29ZM17.3461 23.4074C19.0466 23.4074 20.4823 22.8222 21.653 21.6516C22.8237 20.481 23.4091 19.0451 23.4091 17.3439C23.4091 15.6427 22.8237 14.2073 21.653 13.0375C20.4823 11.8678 19.0466 11.2825 17.3461 11.2817C15.6455 11.2808 14.2095 11.8661 13.0379 13.0375C11.8663 14.209 11.281 15.6444 11.2818 17.3439C11.2827 19.0434 11.868 20.4789 13.0379 21.6503C14.2078 22.8217 15.6434 23.407 17.3448 23.4062M16.7039 20.4007V17.986H14.2902V16.7044H16.7065V14.2897H17.9883V16.7044H20.4032V17.986H17.9883V20.402L16.7039 20.4007Z"
+                                    fill="#F4E3D0" />
+                                </svg>
+                            </div>
+                            </div>
+                            <div class="p-spec__floor-item p-spec__floor-item--2">
+                            <div class="p-spec__floor-num">2F</div>
+                            <img src="./assets/img/pic/floor_2f.png" class="u-img-responsive u-pc-block">
+                            <img src="./assets/img/pic/floor_2f_sp.png" class="u-img-responsive u-sp-block">
+                            <div class="p-spec__icon p-spec__icon--2 u-sp-block">
+                                <svg width="39" height="39" viewBox="0 0 39 39" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="19.5" cy="19.5" r="19.5" fill="#678666" />
+                                <path
+                                    d="M28.095 29L22.0683 22.9742C21.4274 23.5202 20.6904 23.9428 19.8572 24.2418C19.024 24.5409 18.1865 24.6904 17.3448 24.6904C15.2922 24.6904 13.5549 23.9799 12.1329 22.559C10.711 21.1381 10 19.4014 10 17.349C10 15.2967 10.7101 13.5592 12.1304 12.1365C13.5506 10.7139 15.2871 10.0017 17.3397 10C19.3923 9.99829 21.1304 10.7092 22.5541 12.1327C23.9778 13.5562 24.6896 15.2937 24.6896 17.3452C24.6896 18.2355 24.532 19.0972 24.2166 19.9303C23.9013 20.7634 23.4868 21.476 22.9733 22.0681L29 28.0926L28.095 29ZM17.3461 23.4074C19.0466 23.4074 20.4823 22.8222 21.653 21.6516C22.8237 20.481 23.4091 19.0451 23.4091 17.3439C23.4091 15.6427 22.8237 14.2073 21.653 13.0375C20.4823 11.8678 19.0466 11.2825 17.3461 11.2817C15.6455 11.2808 14.2095 11.8661 13.0379 13.0375C11.8663 14.209 11.281 15.6444 11.2818 17.3439C11.2827 19.0434 11.868 20.4789 13.0379 21.6503C14.2078 22.8217 15.6434 23.407 17.3448 23.4062M16.7039 20.4007V17.986H14.2902V16.7044H16.7065V14.2897H17.9883V16.7044H20.4032V17.986H17.9883V20.402L16.7039 20.4007Z"
+                                    fill="#F4E3D0" />
+                                </svg>
+                            </div>
+                            </div>
+                            <div class="p-spec__icon p-spec__icon--3 u-pc-block">
+                            <svg width="39" height="39" viewBox="0 0 39 39" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="19.5" cy="19.5" r="19.5" fill="#678666" />
+                                <path
+                                d="M28.095 29L22.0683 22.9742C21.4274 23.5202 20.6904 23.9428 19.8572 24.2418C19.024 24.5409 18.1865 24.6904 17.3448 24.6904C15.2922 24.6904 13.5549 23.9799 12.1329 22.559C10.711 21.1381 10 19.4014 10 17.349C10 15.2967 10.7101 13.5592 12.1304 12.1365C13.5506 10.7139 15.2871 10.0017 17.3397 10C19.3923 9.99829 21.1304 10.7092 22.5541 12.1327C23.9778 13.5562 24.6896 15.2937 24.6896 17.3452C24.6896 18.2355 24.532 19.0972 24.2166 19.9303C23.9013 20.7634 23.4868 21.476 22.9733 22.0681L29 28.0926L28.095 29ZM17.3461 23.4074C19.0466 23.4074 20.4823 22.8222 21.653 21.6516C22.8237 20.481 23.4091 19.0451 23.4091 17.3439C23.4091 15.6427 22.8237 14.2073 21.653 13.0375C20.4823 11.8678 19.0466 11.2825 17.3461 11.2817C15.6455 11.2808 14.2095 11.8661 13.0379 13.0375C11.8663 14.209 11.281 15.6444 11.2818 17.3439C11.2827 19.0434 11.868 20.4789 13.0379 21.6503C14.2078 22.8217 15.6434 23.407 17.3448 23.4062M16.7039 20.4007V17.986H14.2902V16.7044H16.7065V14.2897H17.9883V16.7044H20.4032V17.986H17.9883V20.402L16.7039 20.4007Z"
+                                fill="#F4E3D0" />
+                            </svg>
+                            </div>
+                        </div>
+                        <div class="u-sp-block">
+                            <div class="floor__index">
+                            <div class="floor__item floor__item--1 is-active">
+                                1F
+                            </div>
+                            <div class="floor__item floor__item--2">
+                                2F
+                            </div>
+                            </div>
+                        </div>
+                        <p class="p-spec__caption">
+                            ※本体価格は地域、気候、その他の理由により取扱店ごとに設定をしております。詳しくは施工エリアの担当店舗までお問い合わせください。<br>
+                            ※掲載画像はイメージです。表示イメージは実際の商品と異なる場合がございます。<br>
+                            ※仕様内容は諸事情により、変更となる場合がございます。<br>
+                            ※床面積に関しては、屋内部分の床面積合計で記載しています。建築基準法上の面積詳細については担当取扱店へご確認ください。
+                        </p>
+
+                        </div> -->
+                    </div>
+                    </div>
+                </div>
+
+                <!-- ===== TECHNIQUE: pinned vertical-writing-mode text reveal, blurred-in per line via ScrollTrigger ===== -->
+                <div class="p-concept">
+                    <div class="p-concept__inner">
+                    <div class="p-concept__wrap">
+                        <div class="p-concept__copy-jp p-concept__copy-jp--1">
+                        <p class="jp-1">
+                            出会い<br>
+                            <br>
+                            同じ職場で顔を合わせるうちに、<br>
+                            昼休みをともに過ごすようになった二人。<br>
+                            趣味の話に花を咲かせ、<br>
+                            気づけばかけがえのない<br>
+                            存在になっていました。
+                        </p>
+                        </div>
+                        <div class="p-concept__copy-jp p-concept__copy-jp--2">
+                        <p class="jp-1">
+                            ある日、一緒に街へ出かけた帰り道。<br>
+                            別れ際、タクミからひとこと<br>
+                            言葉が届きました。<br>
+                            チヒロは「今の関係が壊れてしまったら」<br>
+                            という怖さから、少し時間をもらうことに。
+                        </p>
+                        </div>
+                        <div class="p-concept__copy-jp p-concept__copy-jp--3">
+                        <p class="jp-1">
+                            でも、離れてみてわかったのは — <br>
+                            一緒にいるときの安心感と、<br>
+                            あのひとへの気持ち。 <br>
+                            自分の心に素直になった日、<br>
+                            二人は晴れて恋人同士になりました。
+                        </p>
+                        </div>
+                        <div class="p-concept__copy-jp p-concept__copy-jp--4">
+                        <p class="jp-1">
+                            プロポーズ<br>
+                            <br>
+                            十一月二日、葉山・森戸海岸。<br> 
+                            富士山と海と空が夕陽に染まるその場所で、<br> 
+                            タクミはチヒロに言葉を贈りました。
+                        </p>
+                        </div>
+                        <div class="p-concept__copy-jp p-concept__copy-jp--5">
+                            <img src="./assets/img/top/concept.png" class="u-img-responsive">
+                        </div>
+                    </div>
+                    </div>
+
+                    <div class="p-concept__space"></div>
+                </div>
+
+              
+                <div class="p-countdown">
+                    <div class="p-countdown__gridwrap">
+                        <p class="p-countdown__ttl">
+                            <span class="u-sronly">wedding countdown</span>
+                            <img src="./assets/img/top/Countdown.png" alt="">
+                        </p>
+                        <div id="cd-grid" class="p-countdown__grid">
+                            <span id="d">--</span>
+                            <span id="h">--</span>
+                            <span id="m">--</span>
+                            <span id="s">--</span>
+                        </div>
+                        <div class="p-countdown__txt">
+                            <span><img src="./assets/img/top/days.png" alt="Days"></span>
+                            <span><img src="./assets/img/top/hrs.png" alt="Hours"></span>
+                            <span><img src="./assets/img/top/min.png" alt="Minutes"></span>
+                            <span><img src="./assets/img/top/sec.png" alt="Seconds"></span>
+                        </div>
+                    </div>
+                    
+                    <div id="cd-done" style="display:none;">The day has come!</div>
+                    
+                    <script>
+                        const TARGET = new Date("2026-09-23T11:00:00+09:00");
+                        const pad = n => String(n).padStart(2, "0");
+                    
+                        function tick() {
+                        const diff = TARGET - new Date();
+                        if (diff <= 0) {
+                            document.getElementById("cd-grid").style.display = "none";
+                            document.getElementById("cd-done").style.display = "block";
+                            return;
+                        }
+                        document.getElementById("d").textContent = pad(Math.floor(diff / 86400000));
+                        document.getElementById("h").textContent = pad(Math.floor((diff % 86400000) / 3600000));
+                        document.getElementById("m").textContent = pad(Math.floor((diff % 3600000) / 60000));
+                        document.getElementById("s").textContent = pad(Math.floor((diff % 60000) / 1000));
+                        }
+                    
+                        tick();
+                        setInterval(tick, 1000);
+                    </script>
+                </div>
+
+
+                <div id="order" class="p-order js-onscreen">
+                    <div class="p-order__inner js-onscreen">
+                    <div class="p-heading p-heading--order js-onscreen">
+                        PROGRAM
+                    </div>
+                    <div class="p-program__list">
+                        <div class="p-program__item">
+                            <div class="p-program__left js-onscreen">
+                                <div class="p-program__img">
+                                    <img src="./assets/img/top/prog_01.png" class="" alt="Program Image">
+                                </div>
+                            </div>
+                            <div class="p-program__right js-onscreen">
+                                <span class="p-program__let"><img src="./assets/img/top/Ceremony.png" alt=""></span>
+                                <p class="p-program__txt">
+                                    神前式
+                                </p>
+                            </div>
+                        </div>
+                        <div class="p-program__item">
+                            <div class="p-program__left js-onscreen">
+                                <div class="p-program__img">
+                                    <img src="./assets/img/top/prog_02.png" class="" alt="Program Image">
+                                </div>
+                            </div>
+                            <div class="p-program__right js-onscreen">
+                                <span class="p-program__let"><img src="./assets/img/top/Garden_Party.png" alt=""></span>
+                                <p class="p-program__txt">
+                                    ガーデンパーティ
+                                </p>
+                            </div>
+                        </div>
+                        <div class="p-program__item">
+                            <div class="p-program__left js-onscreen">
+                                <div class="p-program__img">
+                                    <img src="./assets/img/top/prog_03.png" class="" alt="Program Image">
+                                </div>
+                            </div>
+                            <div class="p-program__right js-onscreen">
+                                <span class="p-program__let"><img src="./assets/img/top/Reception.png" alt=""></span>
+                                <p class="p-program__txt">
+                                    披露宴開始
+                                </p>
+                            </div>
+                        </div>
+                        <div class="p-program__item">
+                            <div class="p-program__left js-onscreen">
+                                <div class="p-program__img">
+                                    <img src="./assets/img/top/prog_04.png" class="" alt="Program Image">
+                                </div>
+                            </div>
+                            <div class="p-program__right js-onscreen">
+                                <span class="p-program__let"><img src="./assets/img/top/Dinner.png" alt=""></span>
+                                <p class="p-program__txt">
+                                    お食事
+                                </p>
+                            </div>
+                        </div>
+                        <div class="p-program__item">
+                            <div class="p-program__left js-onscreen">
+                                <div class="p-program__img">
+                                    <img src="./assets/img/top/prog_05.png" class="" alt="Program Image">
+                                </div>
+                            </div>
+                            <div class="p-program__right js-onscreen">
+                                <span class="p-program__let"><img src="./assets/img/top/Entertainment.png" alt=""></span>
+                                <p class="p-program__txt">
+                                    余興
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="p-order__list">
+                        <div class="p-order__item js-onscreen">
+                        <div class="p-order__icon">
+                            <svg width="23" height="21" viewBox="0 0 23 21" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                            <rect x="0.5" y="0.5" width="20" height="20" rx="3.5" stroke="#678666" />
+                            <path class="checkmark"
+                                    d="M10.3636 15L4 8.42531L4.91421 7.48209L10.3636 13.1123L22.0871 1L23 1.94453L10.3636 15Z"
+                                    fill="#678666" />
+                            </svg>
+                        </div>
+                        <div class="p-order__ttl">
+                            規格住宅
+                        </div>
+                        </div>
+                        <div class="p-order__item js-onscreen">
+                        <div class="p-order__icon">
+                            <svg width="23" height="21" viewBox="0 0 23 21" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                            <rect x="0.5" y="0.5" width="20" height="20" rx="3.5" stroke="#678666" />
+                            <path class="checkmark"
+                                    d="M10.3636 15L4 8.42531L4.91421 7.48209L10.3636 13.1123L22.0871 1L23 1.94453L10.3636 15Z"
+                                    fill="#678666" />
+                            </svg>
+                        </div>
+                        <div class="p-order__ttl">
+                            リノベーション
+                        </div>
+                        </div>
+                        <div class="p-order__item js-onscreen">
+                        <div class="p-order__icon">
+                            <svg width="23" height="21" viewBox="0 0 23 21" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                            <rect x="0.5" y="0.5" width="20" height="20" rx="3.5" stroke="#678666" />
+                            <path class="checkmark"
+                                    d="M10.3636 15L4 8.42531L4.91421 7.48209L10.3636 13.1123L22.0871 1L23 1.94453L10.3636 15Z"
+                                    fill="#678666" />
+                            </svg>
+                        </div>
+                        <div class="p-order__ttl">
+                            事業活用
+                        </div>
+                        </div>
+                    </div>
+                    <p class="p-lead js-onscreen">
+                        PICNIC MOTEL
+                        HOUSEのデザインは<br>住宅からカフェやサロン、民泊事業など、<br
+                        class="u-sp-block">さまざまな用途にアレンジできます！<br>詳しくはお近くのDolive取扱店へ相談ください。
+                    </p>
+                    <div class="c-button">
+                        <a href="https://house.dolive.media/shop/" target="_blank">お近くの取扱店を探す</a>
+                    </div> -->
+                    </div>
+                </div>
+
+                <!-- ===== TECHNIQUE: Swiper carousel, separate PC/SP instances ===== -->
+                <div id="topics" class="p-topics js-onscreen">
+                    <div class="p-topics__inner">
+                    <div class="p-heading p-heading--topics js-onscreen">
+                        GALLERY
+                    </div>
+                    <div class="p-topics-swiper js-onscreen">
+                        <div class="swiper u-pc-block">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <a href="javascript:void(0);" target="_blank" rel="noopener">
+                                <div class="p-topics__item">
+                                    <div class="p-topics__img">
+                                    <img src="./assets/img/top/gal_01.jpg" class="u-img-responsive" />
+                                    </div>
+                                    <p class="p-topics__caption">
+                                        <span class="p-topics__capimg"><img src="./assets/img/top/studio-photo.png" alt=""></span>
+                                        <span class="p-topics__captxt">1</span>
+                                    </p>
+                                </div>
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a href="javascript:void(0);" target="_blank" rel="noopener">
+                                <div class="p-topics__item">
+                                    <div class="p-topics__img">
+                                    <img src="./assets/img/top/gal_02.jpg" class="u-img-responsive" />
+                                    </div>
+                                    <p class="p-topics__caption">
+                                        <span class="p-topics__capimg"><img src="./assets/img/top/studio-photo.png" alt=""></span>
+                                        <span class="p-topics__captxt">2</span>
+                                    </p>
+                                </div>
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a href="javascript:void(0);" target="_blank" rel="noopener">
+                                <div class="p-topics__item">
+                                    <div class="p-topics__img">
+                                    <img src="./assets/img/top/gal_03.jpg" class="u-img-responsive">
+                                    </div>
+                                    <p class="p-topics__caption">
+                                        <span class="p-topics__capimg"><img src="./assets/img/top/studio-photo.png" alt=""></span>
+                                        <span class="p-topics__captxt">3</span>
+                                    </p>
+                                </div>
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a href="javascript:void(0);" target="_blank" rel="noopener">
+                                <div class="p-topics__item">
+                                    <div class="p-topics__img">
+                                    <img src="./assets/img/top/gal_04.jpg" class="u-img-responsive">
+                                    </div>
+                                    <p class="p-topics__caption">
+                                        <span class="p-topics__capimg"><img src="./assets/img/top/studio-photo.png" alt=""></span>
+                                        <span class="p-topics__captxt">4</span>
+                                    </p>
+                                </div>
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a href="javascript:void(0);" target="_blank" rel="noopener">
+                                <div class="p-topics__item">
+                                    <div class="p-topics__img">
+                                    <img src="./assets/img/top/gal_05.jpg" class="u-img-responsive">
+                                    </div>
+                                    <p class="p-topics__caption">
+                                        <span class="p-topics__capimg"><img src="./assets/img/top/studio-photo.png" alt=""></span>
+                                        <span class="p-topics__captxt">5</span>
+                                    </p>
+                                </div>
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a href="javascript:void(0);" target="_blank" rel="noopener">
+                                <div class="p-topics__item">
+                                    <div class="p-topics__img">
+                                    <img src="./assets/img/top/gal_06.jpg" class="u-img-responsive" />
+                                    </div>
+                                    <p class="p-topics__caption">
+                                        <span class="p-topics__capimg"><img src="./assets/img/top/studio-photo.png" alt=""></span>
+                                        <span class="p-topics__captxt">6</span>
+                                    </p>
+                                </div>
+                                </a>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="swiper u-sp-block">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <a href="javascript:void(0);" target="_blank" rel="noopener">
+                                <div class="p-topics__item">
+                                    <div class="p-topics__img">
+                                    <img src="./assets/img/top/gal_01.jpg" class="u-img-responsive" />
+                                    </div>
+                                    <p class="p-topics__caption">
+                                        <span class="p-topics__capimg"><img src="./assets/img/top/studio-photo.png" alt=""></span>
+                                        <span class="p-topics__captxt">1</span>
+                                    </p>
+                                </div>
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a href="javascript:void(0);" target="_blank" rel="noopener">
+                                <div class="p-topics__item">
+                                    <div class="p-topics__img">
+                                    <img src="./assets/img/top/gal_02.jpg" class="u-img-responsive" />
+                                    </div>
+                                    <p class="p-topics__caption">
+                                        <span class="p-topics__capimg"><img src="./assets/img/top/studio-photo.png" alt=""></span>
+                                        <span class="p-topics__captxt">2</span>
+                                    </p>
+                                </div>
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a href="javascript:void(0);" target="_blank" rel="noopener">
+                                <div class="p-topics__item">
+                                    <div class="p-topics__img">
+                                    <img src="./assets/img/top/gal_03.jpg" class="u-img-responsive">
+                                    </div>
+                                    <p class="p-topics__caption">
+                                        <span class="p-topics__capimg"><img src="./assets/img/top/studio-photo.png" alt=""></span>
+                                        <span class="p-topics__captxt">3</span>
+                                    </p>
+                                </div>
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a href="javascript:void(0);" target="_blank" rel="noopener">
+                                <div class="p-topics__item">
+                                    <div class="p-topics__img">
+                                    <img src="./assets/img/top/gal_04.jpg" class="u-img-responsive">
+                                    </div>
+                                    <p class="p-topics__caption">
+                                        <span class="p-topics__capimg"><img src="./assets/img/top/studio-photo.png" alt=""></span>
+                                        <span class="p-topics__captxt">4</span>
+                                    </p>
+                                </div>
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a href="javascript:void(0);" target="_blank" rel="noopener">
+                                <div class="p-topics__item">
+                                    <div class="p-topics__img">
+                                    <img src="./assets/img/top/gal_05.jpg" class="u-img-responsive">
+                                    </div>
+                                    <p class="p-topics__caption">
+                                        <span class="p-topics__capimg"><img src="./assets/img/top/studio-photo.png" alt=""></span>
+                                        <span class="p-topics__captxt">5</span>
+                                    </p>
+                                </div>
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a href="javascript:void(0);" target="_blank" rel="noopener">
+                                <div class="p-topics__item">
+                                    <div class="p-topics__img">
+                                    <img src="./assets/img/top/gal_06.jpg" class="u-img-responsive" />
+                                    </div>
+                                    <p class="p-topics__caption">
+                                        <span class="p-topics__capimg"><img src="./assets/img/top/studio-photo.png" alt=""></span>
+                                        <span class="p-topics__captxt">6</span>
+                                    </p>
+                                </div>
+                                </a>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="p-topics-swiper-bottom u-pc-block">
+                        <div class="p-topics-swiper-button">
+                        <div class="p-topics-swiper-button-prev" tabindex="0" role="button"
+                            aria-label="Previous slide" aria-controls="insta-feed-1">
+                            <div class="c-scroll__icon">
+                            <div class="c-scroll__icon-inner"
+                                style="transform: translate(-50%,-50%) rotate(90deg)">
+                                <div class="c-scroll__icon-back">
+                                <svg width="8" height="10" viewBox="0 0 8 10" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                    d="M3.69231 10C2.91738 8.46098 1.68661 7.03035 0 5.70809V4.57009C0.729345 4.89523 1.36752 5.22038 1.91453 5.54552C2.46154 5.84899 2.91738 6.15246 3.28205 6.45592V0H4.71795V6.45592C5.10541 6.15246 5.57265 5.84899 6.11966 5.54552C6.66667 5.22038 7.29345 4.89523 8 4.57009V5.70809C6.33618 7.03035 5.10541 8.46098 4.30769 10H3.69231Z"
+                                    fill="#F4E3D0"></path>
+                                </svg>
+                                </div>
+                                <div class="c-scroll__icon-front">
+                                <svg width="8" height="10" viewBox="0 0 8 10" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                    d="M3.69231 10C2.91738 8.46098 1.68661 7.03035 0 5.70809V4.57009C0.729345 4.89523 1.36752 5.22038 1.91453 5.54552C2.46154 5.84899 2.91738 6.15246 3.28205 6.45592V0H4.71795V6.45592C5.10541 6.15246 5.57265 5.84899 6.11966 5.54552C6.66667 5.22038 7.29345 4.89523 8 4.57009V5.70809C6.33618 7.03035 5.10541 8.46098 4.30769 10H3.69231Z"
+                                    fill="#F4E3D0"></path>
+                                </svg>
+                                </div>
+                            </div>
+                            </div>
+                            <span class="p-topics-swiper-button-text">PREV</span>
+                        </div>
+                        <div class="p-topics-swiper-button-next" tabindex="0" role="button"
+                            aria-label="Next slide" aria-controls="insta-feed-1">
+                            <span class="p-topics-swiper-button-text">NEXT</span>
+                            <div class="c-scroll__icon">
+                            <div class="c-scroll__icon-inner">
+                                <div class="c-scroll__icon-back">
+                                <svg width="8" height="10" viewBox="0 0 8 10" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                    d="M3.69231 10C2.91738 8.46098 1.68661 7.03035 0 5.70809V4.57009C0.729345 4.89523 1.36752 5.22038 1.91453 5.54552C2.46154 5.84899 2.91738 6.15246 3.28205 6.45592V0H4.71795V6.45592C5.10541 6.15246 5.57265 5.84899 6.11966 5.54552C6.66667 5.22038 7.29345 4.89523 8 4.57009V5.70809C6.33618 7.03035 5.10541 8.46098 4.30769 10H3.69231Z"
+                                    fill="#F4E3D0"></path>
+                                </svg>
+                                </div>
+                                <div class="c-scroll__icon-front">
+                                <svg width="8" height="10" viewBox="0 0 8 10" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                    d="M3.69231 10C2.91738 8.46098 1.68661 7.03035 0 5.70809V4.57009C0.729345 4.89523 1.36752 5.22038 1.91453 5.54552C2.46154 5.84899 2.91738 6.15246 3.28205 6.45592V0H4.71795V6.45592C5.10541 6.15246 5.57265 5.84899 6.11966 5.54552C6.66667 5.22038 7.29345 4.89523 8 4.57009V5.70809C6.33618 7.03035 5.10541 8.46098 4.30769 10H3.69231Z"
+                                    fill="#F4E3D0"></path>
+                                </svg>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="u-sp-block">
+                        <div class="p-topics-swiper-bottom">
+                        <div class="p-topics-swiper-button">
+                            <div class="p-topics-swiper-button-prev" tabindex="0" role="button"
+                                aria-label="Previous slide" aria-controls="insta-feed-1">
+                            <div class="c-scroll__icon">
+                                <div class="c-scroll__icon-inner"
+                                    style="transform: translate(-50%,-33%) rotate(90deg)">
+                                <div class="c-scroll__icon-back">
+                                    <svg width="8" height="10" viewBox="0 0 8 10" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M3.69231 10C2.91738 8.46098 1.68661 7.03035 0 5.70809V4.57009C0.729345 4.89523 1.36752 5.22038 1.91453 5.54552C2.46154 5.84899 2.91738 6.15246 3.28205 6.45592V0H4.71795V6.45592C5.10541 6.15246 5.57265 5.84899 6.11966 5.54552C6.66667 5.22038 7.29345 4.89523 8 4.57009V5.70809C6.33618 7.03035 5.10541 8.46098 4.30769 10H3.69231Z"
+                                        fill="#F4E3D0"></path>
+                                    </svg>
+                                </div>
+                                <div class="c-scroll__icon-front">
+                                    <svg width="8" height="10" viewBox="0 0 8 10" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M3.69231 10C2.91738 8.46098 1.68661 7.03035 0 5.70809V4.57009C0.729345 4.89523 1.36752 5.22038 1.91453 5.54552C2.46154 5.84899 2.91738 6.15246 3.28205 6.45592V0H4.71795V6.45592C5.10541 6.15246 5.57265 5.84899 6.11966 5.54552C6.66667 5.22038 7.29345 4.89523 8 4.57009V5.70809C6.33618 7.03035 5.10541 8.46098 4.30769 10H3.69231Z"
+                                        fill="#F4E3D0"></path>
+                                    </svg>
+                                </div>
+                                </div>
+                            </div>
+                            <span class="p-topics-swiper-button-text">PREV</span>
+                            </div>
+                            <div class="p-topics-swiper-button-next" tabindex="0" role="button"
+                                aria-label="Next slide" aria-controls="insta-feed-1">
+                            <span class="p-topics-swiper-button-text">NEXT</span>
+                            <div class="c-scroll__icon">
+                                <div class="c-scroll__icon-inner">
+                                <div class="c-scroll__icon-back">
+                                    <svg width="8" height="10" viewBox="0 0 8 10" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M3.69231 10C2.91738 8.46098 1.68661 7.03035 0 5.70809V4.57009C0.729345 4.89523 1.36752 5.22038 1.91453 5.54552C2.46154 5.84899 2.91738 6.15246 3.28205 6.45592V0H4.71795V6.45592C5.10541 6.15246 5.57265 5.84899 6.11966 5.54552C6.66667 5.22038 7.29345 4.89523 8 4.57009V5.70809C6.33618 7.03035 5.10541 8.46098 4.30769 10H3.69231Z"
+                                        fill="#F4E3D0"></path>
+                                    </svg>
+                                </div>
+                                <div class="c-scroll__icon-front">
+                                    <svg width="8" height="10" viewBox="0 0 8 10" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M3.69231 10C2.91738 8.46098 1.68661 7.03035 0 5.70809V4.57009C0.729345 4.89523 1.36752 5.22038 1.91453 5.54552C2.46154 5.84899 2.91738 6.15246 3.28205 6.45592V0H4.71795V6.45592C5.10541 6.15246 5.57265 5.84899 6.11966 5.54552C6.66667 5.22038 7.29345 4.89523 8 4.57009V5.70809C6.33618 7.03035 5.10541 8.46098 4.30769 10H3.69231Z"
+                                        fill="#F4E3D0"></path>
+                                    </svg>
+                                </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+
+
+
+                <!-- ===== TECHNIQUE: pinned horizontal scroll + mask-image reveal on product photos ===== -->
+                <div id="product" class="p-product js-onscreen">
+                    <div class="p-product__inner">
+                        <div class="p-heading p-heading--product js-onscreen">
+                            PHOTOS
+                        </div>
+                        <div class="p-copy js-onscreen">
+                            日常を映画に、暮らしをピクニックに。<br>​思い描いた​憧れを、​ひと​つずつ​叶えていく​家。
+                        </div>
+                        <p class="p-lead js-onscreen">
+                            アーチが描く柔らかな景色に、ガラス越しに感じる風。<br>静も動も楽しいダイニング、<br class="u-sp-block">新築っぽくない、でも新しい。<br><br>日常の景色をデザインする、<br>新しい暮らしかた。
+                        </p>
+
+                        <div class="p-product__index">
+                            <div class="p-product__index-list">
+                            <div class="p-product__index-item">
+                                <a href="#product01" class="js-scroll">
+                                <img src="./assets/img/pic/product_thumb_01.webp" class="u-img-responsive">
+                                </a>
+                            </div>
+                            <div class="p-product__index-item u-pc-block">
+                                <a href="#product02" class="js-scroll">
+                                <img src="./assets/img/pic/product_thumb_02.webp" class="u-img-responsive">
+                                </a>
+                            </div>
+                            <div class="p-product__index-item u-sp-block">
+                                <a href="#product02-sp" class="js-scroll">
+                                <img src="./assets/img/pic/product_thumb_02.webp" class="u-img-responsive">
+                                </a>
+                            </div>
+                            <div class="p-product__index-item u-pc-block">
+                                <a href="#product03" class="js-scroll">
+                                <img src="./assets/img/pic/product_thumb_03.webp" class="u-img-responsive">
+                                </a>
+                            </div>
+                            <div class="p-product__index-item u-sp-block">
+                                <a href="#product03-sp" class="js-scroll">
+                                <img src="./assets/img/pic/product_thumb_03.webp" class="u-img-responsive">
+                                </a>
+                            </div>
+                            </div>
+                        </div>
+
+                    <div class="p-product__main">
+                        <div id="product01" class="p-product__list js-onscreen">
+                        <div class="p-product__item p-product__item--1">
+                            <div class="p-product__head">
+                            <div class="p-product__ttl js-onscreen">EVENT</div>
+                            <div class="p-product__copy js-onscreen">神前式<br>Wedding Ceremony</div>
+                            <p class="p-product__lead js-onscreen u-pc-block">
+                                <span>〒107-0052<br>赤坂氷川神社　東京都港区赤坂6-10-12</span>
+                            </p>
+                            </div>
+                            <div class="p-product__img js-onscreen"
+                                style="background-image: url(./assets/img/top/eve_01.jpg);"></div>
+                            <div class="p-product__textarea js-onscreen">
+                            <p class="p-product__lead u-sp-block js-onscreen">
+                                <span>あえて装飾を削ぎ落とした、アートのような佇まい。ゆるやかなアーチの玄関や、小さなスクエア窓、自然光をやわらかく受け止めるテクスチャー。ミニマルなのに温かく、どこか映画のワンシーンのような情緒が漂います。</span>
+                            </p>
+                            <div class="p-product__recipe js-onscreen">
+                                <div class="p-product__recipe-inner">
+                                    <p class="p-product__lead js-onscreen u-pc-block">
+                                        <span>あえて装飾を削ぎ落とした、アートのような佇まい。ゆるやかなアーチの玄関や、小さなスクエア窓、自然光をやわらかく受け止めるテクスチャー。ミニマルなのに温かく、どこか映画のワンシーンのような情緒が漂います。</span>
+                                    </p>
+                                    <div class="p-product__recipe-ttl js-onscreen">
+                                        <span>Details</span>
+                                    </div>
+                                    <div class="p-product__recipe-list p-product__recipe-list--1">
+                                        <div class="p-product__recipe-item js-onscreen">
+                                        <div class="p-product__recipe-img">
+                                            <img src="./assets/img/pic/product_recipe_01-a.webp"
+                                                class="u-img-responsive">
+                                        </div>
+                                        <div class="p-product__recipe-textarea">
+                                            <div class="p-product__recipe-copy">異なる高さのファサード</div>
+                                            <p>高さを変えた3つの箱の構成により、室内空間にも隙間やリズムが生まれました。</p>
+                                        </div>
+                                        </div>
+                                        <div class="p-product__recipe-item js-onscreen">
+                                        <div class="p-product__recipe-img">
+                                            <img src="./assets/img/pic/product_recipe_01-b.webp"
+                                                class="u-img-responsive">
+                                        </div>
+                                        <div class="p-product__recipe-textarea">
+                                            <div class="p-product__recipe-copy">アーチ状の玄関ドア</div>
+                                            <p>直線的なファサードの中に、象徴となる曲線のドアを置くことで柔らかさをプラス。</p>
+                                        </div>
+                                        </div>
+                                        <div class="p-product__recipe-item js-onscreen">
+                                        <div class="p-product__recipe-img">
+                                            <img src="./assets/img/pic/product_recipe_01-c.webp"
+                                                class="u-img-responsive">
+                                        </div>
+                                        <div class="p-product__recipe-textarea">
+                                            <div class="p-product__recipe-copy">自然と調和する外壁</div>
+                                            <p>時間の移ろいで変わる自然光を受け止め、景色と調和して豊かな表情を見せてくれる左官仕上げの外壁。</p>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="p-product__recipe-inner">
+                                    <div class="p-product__recipe-ttl js-onscreen">
+                                        <span>HOUSE RECIPE </span>
+                                    </div>
+                                    <div class="p-product__recipe-list p-product__recipe-list--1">
+                                        <div class="p-product__recipe-item js-onscreen">
+                                        <div class="p-product__recipe-img">
+                                            <img src="./assets/img/pic/product_recipe_01-a.webp"
+                                                class="u-img-responsive">
+                                        </div>
+                                        <div class="p-product__recipe-textarea">
+                                            <div class="p-product__recipe-copy">異なる高さのファサード</div>
+                                            <p>高さを変えた3つの箱の構成により、室内空間にも隙間やリズムが生まれました。</p>
+                                        </div>
+                                        </div>
+                                        <div class="p-product__recipe-item js-onscreen">
+                                        <div class="p-product__recipe-img">
+                                            <img src="./assets/img/pic/product_recipe_01-b.webp"
+                                                class="u-img-responsive">
+                                        </div>
+                                        <div class="p-product__recipe-textarea">
+                                            <div class="p-product__recipe-copy">アーチ状の玄関ドア</div>
+                                            <p>直線的なファサードの中に、象徴となる曲線のドアを置くことで柔らかさをプラス。</p>
+                                        </div>
+                                        </div>
+                                        <div class="p-product__recipe-item js-onscreen">
+                                        <div class="p-product__recipe-img">
+                                            <img src="./assets/img/pic/product_recipe_01-c.webp"
+                                                class="u-img-responsive">
+                                        </div>
+                                        <div class="p-product__recipe-textarea">
+                                            <div class="p-product__recipe-copy">自然と調和する外壁</div>
+                                            <p>時間の移ろいで変わる自然光を受け止め、景色と調和して豊かな表情を見せてくれる左官仕上げの外壁。</p>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div id="product02-sp" class="p-product__item p-product__item--2 js-onscreen">
+                            <div class="p-product__head">
+                            <div class="p-product__ttl js-onscreen">DINING＆KITCHEN</div>
+                            <div class="p-product__copy js-onscreen">囲むように設計された、<br>暮らしの中心になる場所</div>
+                            <p class="p-product__lead js-onscreen u-pc-block">
+                                <span>会話が生まれるキッチン、絵画のようなダイニング、季節の移ろいとともに気持ちがほどけていく中庭。日常のあらゆるシーンが、少しだけ特別に感じられるような工夫が散りばめられています。</span>
+                            </p>
+                            </div>
+                            <div class="p-product__img js-onscreen"
+                                style="background-image: url(./assets/img/pic/product_main_02.webp);"></div>
+                            <div class="p-product__textarea js-onscreen">
+                            <p class="p-product__lead js-onscreen u-sp-block">
+                                <span>会話が生まれるキッチン、絵画のようなダイニング、季節の移ろいとともに気持ちがほどけていく中庭。日常のあらゆるシーンが、少しだけ特別に感じられるような工夫が散りばめられています。</span>
+                            </p>
+                            <div class="p-product__recipe js-onscreen">
+                                <div class="p-product__recipe-inner">
+                                <div class="p-product__recipe-ttl js-onscreen">
+                                    <span>HOUSE RECIPE </span>
+                                </div>
+                                <div class="p-product__recipe-list p-product__recipe-list--2">
+                                    <div class="p-product__recipe-item js-onscreen">
+                                    <div class="p-product__recipe-img">
+                                        <img src="./assets/img/pic/product_recipe_02-a.webp"
+                                            class="u-img-responsive">
+                                    </div>
+                                    <div class="p-product__recipe-textarea">
+                                        <div class="p-product__recipe-copy">会話もは​ずむラウンドカウンター</div>
+                                        <p>心地よい​朝食も​語らう​ひと​ときも、​キッチンと​繋がる​モーテル風ダイニングは、​誰もが​くつろげる​場所。</p>
+                                    </div>
+                                    </div>
+                                    <div class="p-product__recipe-item js-onscreen">
+                                    <div class="p-product__recipe-img">
+                                        <img src="./assets/img/pic/product_recipe_02-b.webp"
+                                            class="u-img-responsive">
+                                    </div>
+                                    <div class="p-product__recipe-textarea">
+                                        <div class="p-product__recipe-copy">リビングと行き来できる中庭</div>
+                                        <p>吹き抜けから自然光が注ぎ、ハーブや野菜を育てられる中庭は、季節ごとに違う景色をデザインします。</p>
+                                    </div>
+                                    </div>
+                                    <div class="p-product__recipe-item js-onscreen">
+                                    <div class="p-product__recipe-img">
+                                        <img src="./assets/img/pic/product_recipe_02-c.webp"
+                                            class="u-img-responsive">
+                                    </div>
+                                    <div class="p-product__recipe-textarea">
+                                        <div class="p-product__recipe-copy">テラコッタ調の床</div>
+                                        <p>素焼きの土で仕上げたような風合いと柔らかな色調のタイルは空間全体にぬくもりを与えてくれます。</p>
+                                    </div>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div id="product03-sp" class="p-product__item p-product__item--3">
+                            <div class="p-product__head">
+                            <div class="p-product__ttl js-onscreen">BED ROOM</div>
+                            <div class="p-product__copy js-onscreen">眠るだけじゃない、<br>感性を満たすための寝室</div>
+                            <p class="p-product__lead js-onscreen u-pc-block">
+                                <span>一日の終わりをゆるやかに包みこみ、朝には風や光と一緒に目が覚める。大きく開く窓の向こうには、もうひとつのリビングのようなウッドデッキが広がります。自分と向き合い、感性を整えるための、静かな寝室です。</span>
+                            </p>
+                            </div>
+                            <div class="p-product__img js-onscreen"
+                                style="background-image: url(./assets/img/pic/product_main_03.webp);"></div>
+                            <div class="p-product__textarea js-onscreen">
+                            <p class="p-product__lead js-onscreen u-sp-block">
+                                <span>一日の終わりをゆるやかに包みこみ、朝には風や光と一緒に目が覚める。大きく開く窓の向こうには、もうひとつのリビングのようなウッドデッキが広がります。自分と向き合い、感性を整えるための、静かな寝室です。</span>
+                            </p>
+                            <div class="p-product__recipe js-onscreen">
+                                <div class="p-product__recipe-inner">
+                                <div class="p-product__recipe-ttl js-onscreen">
+                                    <span>HOUSE RECIPE </span>
+                                </div>
+                                <div class="p-product__recipe-list p-product__recipe-list--3">
+                                    <div class="p-product__recipe-item js-onscreen">
+                                    <div class="p-product__recipe-img">
+                                        <img src="./assets/img/pic/product_recipe_03-a.webp"
+                                            class="u-img-responsive">
+                                    </div>
+                                    <div class="p-product__recipe-textarea">
+                                        <div class="p-product__recipe-copy">大きな窓と吹き抜け</div>
+                                        <p>開放感のある窓と1Fとつながる吹き抜けは風と光を運び、部屋に広がりを作っています。</p>
+                                    </div>
+                                    </div>
+                                    <div class="p-product__recipe-item js-onscreen">
+                                    <div class="p-product__recipe-img">
+                                        <img src="./assets/img/pic/product_recipe_03-b.webp"
+                                            class="u-img-responsive">
+                                    </div>
+                                    <div class="p-product__recipe-textarea">
+                                        <div class="p-product__recipe-copy">寝室とつながるウッドデッキ</div>
+                                        <p>日差しが心地よい約17平米のウッドデッキは、もう一つのリビングのような特別な場所に。</p>
+                                    </div>
+                                    </div>
+                                    <div class="p-product__recipe-item js-onscreen">
+                                    <div class="p-product__recipe-img">
+                                        <img src="./assets/img/pic/product_recipe_03-c.webp"
+                                            class="u-img-responsive">
+                                    </div>
+                                    <div class="p-product__recipe-textarea">
+                                        <div class="p-product__recipe-copy">心を整える緑と木の組合せ</div>
+                                        <p>ブランドカラーの緑が基調の壁と各所に配置された木の素材が全体に落ち着きをもたらします。</p>
+                                    </div>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="p-product__space">
+                        <div id="" class="p-product__space-1"></div>
+                        <div id="product02" class="p-product__space-2"></div>
+                        <div id="" class="p-product__space-3"></div>
+                        <div id="product03" class="p-product__space-4"></div>
+                        <div class="p-product__space-5"></div>
+                        </div>
+                    </div>
+
+                    </div>
+
+                </div>
+
+                <!-- ===== TECHNIQUE: noise/Perlin-jittered animated circle border on hover ===== -->
+                <div class="p-footer js-onscreen">
+                    <div class="p-footer__inner js-onscreen">
+                    <div class="p-footer__top">
+                        <div class="p-footer__item js-onscreen">
+                        <div class="p-footer__logo p-footer__logo--1">
+                            <img src="./assets/img/pic/dolive.png" class="u-img-responsive">
+                        </div>
+                        <p class="p-lead js-onscreen">
+                            自分の家は、自分でデザインしよう!<br>Doliveは、みんなの「ハウスレシピ」から<br>家づくりができるアプリ。
+                        </p>
+                        <div class="p-footer__btn">
+                            <a href="https://dolive.media/" target="_blank">
+                            <div class="p-footer__btn-circle">
+                                <svg width="101" height="94" viewBox="0 0 101 94" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                <path id="circlePath2" d="M50.5 93.5C22.8513 93.5 0.5 72.648 0.5 47
+                                            C0.5 21.352 22.8513 0.5 50.5 0.5
+                                            C78.1487 0.5 100.5 21.352 100.5 47
+                                            C100.5 72.648 78.1487 93.5 50.5 93.5Z" stroke="#678666" fill="none"></path>
+                                </svg>
+                                <div class="p-footer__btn-text">VIEW MORE</div>
+                            </div>
+                            </a>
+                        </div>
+                        </div>
+                        <div class="p-footer__cross js-onscreen"></div>
+                        <div class="p-footer__item p-footer__item--2 js-onscreen">
+                        <div class="p-footer__logo p-footer__logo--2">
+                            <img src="./assets/img/pic/nextweekend.png" class="u-img-responsive">
+                        </div>
+                        <p class="p-lead js-onscreen">
+                            「Life is a Picnic」の思考を軸に<br>暮らしの空間やプロダクト、<br>体験をかたちにする<br
+                            class="u-sp-block">ライフスタイルプロデュースチーム。
+                        </p>
+                        <div class="p-footer__btn">
+                            <a href="https://www.instagram.com/nextweekend_jp/" target="_blank">
+                            <div class="p-footer__btn-circle">
+                                <svg width="101" height="94" viewBox="0 0 101 94" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                <path id="circlePath3" d="M50.5 93.5C22.8513 93.5 0.5 72.648 0.5 47
+                                            C0.5 21.352 22.8513 0.5 50.5 0.5
+                                            C78.1487 0.5 100.5 21.352 100.5 47
+                                            C100.5 72.648 78.1487 93.5 50.5 93.5Z" stroke="#678666" fill="none"></path>
+                                </svg>
+                                <div class="p-footer__btn-text">VIEW MORE</div>
+                            </div>
+                            </a>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="p-footer__bottom js-onscreen">
+                        <div class="p-footer__bottom-item js-onscreen">
+                        <div class="p-footer__logo p-footer__logo--3">
+                            <img src="./assets/img/pic/picnicmotel.png" class="u-img-responsive">
+                        </div>
+                        <p class="p-lead js-onscreen" style="text-align: left;">
+                            「日常の景色を、デザインする暮らし」を<br class="u-sp-block">提案するライフスタイルブランド。<br
+                            class="u-sp-block">空間や体験、プロダクトを通して、<br
+                            class="u-sp-block">自分らしい暮らしを見つけるきっかけを作ります。
+                        </p>
+                        <div class="p-footer__btn">
+                            <a href="http://picnicmotel.gar-ten.com/" target="_blank">
+                            <div class="p-footer__btn-circle">
+                                <svg width="101" height="94" viewBox="0 0 101 94" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                <path id="circlePath4" d="M50.5 93.5C22.8513 93.5 0.5 72.648 0.5 47
+                                            C0.5 21.352 22.8513 0.5 50.5 0.5
+                                            C78.1487 0.5 100.5 21.352 100.5 47
+                                            C100.5 72.648 78.1487 93.5 50.5 93.5Z" stroke="#678666" fill="none"></path>
+                                </svg>
+                                <div class="p-footer__btn-text">VIEW MORE</div>
+                            </div>
+                            </a>
+                        </div>
+                        </div>
+                    </div>
+                    <p class="p-lead js-onscreen">
+                        家づくりについてもっと知りたい方は<br>
+                        お近くのDolive取扱店へ相談ください。
+                    </p>
+                    <div class="c-button">
+                        <a href="https://house.dolive.media/shop/" target="_blank">お近くの取扱店を探す</a>
+                    </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+    </div>
 
     </main>
-    
-    <script src="assets/js/common.js"></script>
+
+    <div class="c-flowbtn">
+        <div class="c-flowbtn__list">
+            <div class="c-flowbtn__item c-flowbtn__item--1">
+                <a href="https://house.dolive.media/shop/" target="_blank">
+                    お近くの取扱店に<br>相談する
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== Floor-plan detail modals (triggered from the SPEC section) ===== -->
+    <div class="modal">
+        <div class="modal-body">
+            <div class="p-spec__floor">
+            <div class="p-spec__floor-item">
+                <div class="p-spec__floor-num">1F</div>
+                <img src="./assets/img/pic/floor_1f.png" class="u-img-responsive">
+            </div>
+            <div class="p-spec__floor-item">
+                <div class="p-spec__floor-num">2F</div>
+                <img src="./assets/img/pic/floor_2f.png" class="u-img-responsive">
+            </div>
+            <p class="p-spec__lead">
+                延​床面​積　​72.​6​1㎡​（21.96坪）​<br>
+                床面​積​　​1F：​45​.00㎡​（13.​61坪）​　​2F：​27​.6​1㎡​（8.​35坪）​
+            </p>
+            </div>
+        </div>
+        <div class="p-spec__icon-close">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="19.5771" cy="19.5771" r="19.5" fill="#678666"/>
+            <path d="M11.5792 27.3146C13.823 29.5584 16.4896 30.6804 19.5788 30.6806C22.6681 30.6808 25.3351 29.5585 27.5797 27.3139C29.8244 25.0692 30.946 22.4028 30.9447 19.3147C30.9434 16.2265 29.8214 13.56 27.5787 11.3151C25.3361 9.07013 22.669 7.94757 19.5774 7.94738C16.4859 7.94719 13.8195 9.06886 11.5782 11.3124C9.33696 13.5559 8.21529 16.2223 8.21322 19.3116C8.21116 22.4009 9.33315 25.0674 11.5792 27.3112M14.6992 22.4999L17.8852 19.3139L14.7005 16.1291L16.3916 14.438L19.5797 17.6262L22.7658 14.4401L24.4571 16.1314L21.271 19.3175L24.4574 22.5039L22.7663 24.195L19.5799 21.0086L16.3922 24.1963L14.6992 22.4999Z" fill="#678666"/>
+            <line x1="14.3736" y1="14.02" x2="24.9802" y2="24.6266" stroke="#F4E3D0" stroke-width="1.5"/>
+            <line x1="14.02" y1="24.6264" x2="24.6266" y2="14.0198" stroke="#F4E3D0" stroke-width="1.5"/>
+            </svg>
+        </div>
+    </div>
+    <div class="modal-2">
+        <div class="modal-body">
+            <div class="p-spec__floor">
+            <div class="p-spec__floor-item">
+                <div class="p-spec__floor-num">1F</div>
+                <img src="./assets/img/pic/floor_1f_sp.png" class="u-img-responsive">
+            </div>
+            <p class="p-spec__lead">
+                延​床面​積　​72.​6​1㎡​（21.96坪）​<br>
+                床面​積​　​1F：​45​.00㎡​（13.​61坪）
+            </p>
+            </div>
+        </div>
+        <div class="p-spec__icon-close-2">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="19.5771" cy="19.5771" r="19.5" fill="#678666"/>
+            <path d="M11.5792 27.3146C13.823 29.5584 16.4896 30.6804 19.5788 30.6806C22.6681 30.6808 25.3351 29.5585 27.5797 27.3139C29.8244 25.0692 30.946 22.4028 30.9447 19.3147C30.9434 16.2265 29.8214 13.56 27.5787 11.3151C25.3361 9.07013 22.669 7.94757 19.5774 7.94738C16.4859 7.94719 13.8195 9.06886 11.5782 11.3124C9.33696 13.5559 8.21529 16.2223 8.21322 19.3116C8.21116 22.4009 9.33315 25.0674 11.5792 27.3112M14.6992 22.4999L17.8852 19.3139L14.7005 16.1291L16.3916 14.438L19.5797 17.6262L22.7658 14.4401L24.4571 16.1314L21.271 19.3175L24.4574 22.5039L22.7663 24.195L19.5799 21.0086L16.3922 24.1963L14.6992 22.4999Z" fill="#678666"/>
+            <line x1="14.3736" y1="14.02" x2="24.9802" y2="24.6266" stroke="#F4E3D0" stroke-width="1.5"/>
+            <line x1="14.02" y1="24.6264" x2="24.6266" y2="14.0198" stroke="#F4E3D0" stroke-width="1.5"/>
+            </svg>
+        </div>
+    </div>
+    <div class="modal-3">
+        <div class="modal-body">
+            <div class="p-spec__floor">
+            <div class="p-spec__floor-item">
+                <div class="p-spec__floor-num">2F</div>
+                <img src="./assets/img/pic/floor_2f_sp.png" class="u-img-responsive">
+            </div>
+            <p class="p-spec__lead">
+                延​床面​積　​72.​6​1㎡​（21.96坪）​<br>
+                床面​積​　​2F：​27​.6​1㎡​（8.​35坪）​
+            </p>
+            </div>
+        </div>
+        <div class="p-spec__icon-close-3">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="19.5771" cy="19.5771" r="19.5" fill="#678666"/>
+            <path d="M11.5792 27.3146C13.823 29.5584 16.4896 30.6804 19.5788 30.6806C22.6681 30.6808 25.3351 29.5585 27.5797 27.3139C29.8244 25.0692 30.946 22.4028 30.9447 19.3147C30.9434 16.2265 29.8214 13.56 27.5787 11.3151C25.3361 9.07013 22.669 7.94757 19.5774 7.94738C16.4859 7.94719 13.8195 9.06886 11.5782 11.3124C9.33696 13.5559 8.21529 16.2223 8.21322 19.3116C8.21116 22.4009 9.33315 25.0674 11.5792 27.3112M14.6992 22.4999L17.8852 19.3139L14.7005 16.1291L16.3916 14.438L19.5797 17.6262L22.7658 14.4401L24.4571 16.1314L21.271 19.3175L24.4574 22.5039L22.7663 24.195L19.5799 21.0086L16.3922 24.1963L14.6992 22.4999Z" fill="#678666"/>
+            <line x1="14.3736" y1="14.02" x2="24.9802" y2="24.6266" stroke="#F4E3D0" stroke-width="1.5"/>
+            <line x1="14.02" y1="24.6264" x2="24.6266" y2="14.0198" stroke="#F4E3D0" stroke-width="1.5"/>
+            </svg>
+        </div>
+    </div>
+
 </body>
 </html>

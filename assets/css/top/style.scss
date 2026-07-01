@@ -1,9 +1,5 @@
 @charset "UTF-8";
 
-@use "../_foundation/setting" as *;
+@use "../_object/project/project-pic" as *;
 
-
-  p{
-    color:$color_green ;
-    font-size: 1.6rem
-  }
+@use "../_object/utility/display" as *;

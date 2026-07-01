@@ -9,12 +9,24 @@ $color_brown: #7F6043;
 $color_blk: #333333;
 $color_base: #fff;
 
+$color_pic_green: #678666;
+$color_pic_black: #111;
+
 /*add color*/
 
 /*font-family*/
 $f_sans: "Noto Sans JP", sans-serif;
 // $f_serif: "Noto Serif JP","YuMincho","Hiragino Mincho ProN","Yu Mincho","MS PMincho",serif;
 $f_serif_en: "Montserrat", sans-serif;
+$f_picnic: "Zen Kaku Gothic New";
+
+@mixin runtime {
+  font-family: "Runtime", sans-serif;
+  src: url("../../fonts/RuntimeRegular-m2Odx.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 
 @mixin montserrat {
   font-family: "Montserrat", sans-serif;
@@ -40,8 +52,8 @@ $text_shadow_b: 0px 0px 3px #000, 0px 0px 3px #000, 0px 0px 5px #000, 0px 0px 10
 $text_shadow_w: 0px 0px 3px #fff, 0px 0px 3px #fff, 0px 0px 10px #fff;
 
 /*media query break point*/
-$bpoint_sm: 768px;
-$bpoint_md: 1080px;
+$bpoint_sm: 767px;
+$bpoint_md: 1023px;
 $bpoint_lap: 1260px;
 
 $max_width: 1366px;
@@ -55,11 +67,11 @@ $icontextbtn_width: 1660px;
   $baseRem: math.div($baseSize, 10) * 1rem;
   $mobileRem: math.div($mobileSize, 10) * 1rem;
   font-size: $basePx;
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     font-size: $mobilePx;
   }
   font-size: $baseRem;
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     font-size: $mobileRem;
   }
 }
