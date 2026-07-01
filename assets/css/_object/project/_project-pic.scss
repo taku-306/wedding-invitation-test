@@ -873,6 +873,7 @@
     line-height: 1.85;
     color: #678666;
     font-weight: 500;
+    
 
     @media (max-width: 767px) {
         font-size: 3vw;
@@ -880,6 +881,7 @@
         background: #678666;
         padding: 155px 7.6vw 0;
         margin-top: -130px;
+        border-bottom: 1px solid #678666;
     }
 
     span {
@@ -1097,6 +1099,10 @@
         margin-top: 25px;
     }
 
+    &.mod--1 {
+        display: block;
+    }
+
     &.is-onscreen {
         opacity: 1;
         filter: blur(0);
@@ -1104,25 +1110,28 @@
 }
 
 .p-product__recipe-copy {
-    font-size: 0.8666667vw;
+    font-size: 1.8rem;
     font-weight: 600;
     margin-bottom: 1rem;
 
     @media (max-width: 767px) {
-        font-size: 3.25vw;
+        font-size: 1.6rem;
     }
 }
 
 .p-product__recipe-textarea {
     width: 70%;
+    .mod--1 & {
+        width: 100%;
+    }
 
     p {
-        font-size: 0.8vw;
-        font-weight: 500;
-        line-height: 1.85;
+        font-size: 1.6rem;
+        font-weight: 400;
+        line-height: 2;
 
         @media (max-width: 767px) {
-            font-size: 2.75vw;
+            font-size: 1.4rem;
         }
     }
 }
@@ -1501,11 +1510,18 @@
         display: grid;
         grid-template-columns: 1fr 1fr;
         max-width: 65rem;
+        width: 90%;
         align-items: center;
         justify-content: center;
         margin-inline: auto;
         position: relative;
         margin-block: 2rem;
+        img {
+            width: 100%;
+        }
+        @include bp(sm) {
+            gap: 6rem;
+        }
         &::after {
             content: "";
             position: absolute;

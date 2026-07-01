@@ -1,5 +1,15 @@
 @charset "utf-8";
 @use "sass:math";
+
+@font-face {
+  font-family: "Runtime";
+  src: url("../../fonts/RuntimeRegular-m2Odx.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+
 // setting //////////////////////////////////////////////////
 /*color*/
 $color_green: #678666;
@@ -22,10 +32,8 @@ $f_picnic: "Zen Kaku Gothic New";
 
 @mixin runtime {
   font-family: "Runtime", sans-serif;
-  src: url("../../fonts/RuntimeRegular-m2Odx.otf") format("opentype");
   font-weight: normal;
   font-style: normal;
-  font-display: swap;
 }
 
 @mixin montserrat {
