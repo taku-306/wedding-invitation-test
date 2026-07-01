@@ -1,0 +1,35 @@
+@use "../../_foundation/setting" as *;
+
+/* ------------------------------------------------------------
+    display
+------------------------------------------------------------ */
+.u-pc {
+	display: block;
+	@include bp(sm){
+		display: none;
+	}
+}
+.u-sp {
+	display: none;
+	@include bp(sm){
+		display: block;
+	}
+}
+
+.u-pci {
+	display: inline-block;
+	@include bp(sm){
+		display: none;
+	}
+}
+.u-spi {
+	display: none;
+	@include bp(sm){
+		display: inline-block;
+	}
+}
+
+.u-nolink {
+	cursor: default;
+	pointer-events: none;
+}

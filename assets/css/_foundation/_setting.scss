@@ -1,0 +1,178 @@
+@charset "utf-8";
+@use "sass:math";
+// setting //////////////////////////////////////////////////
+/*color*/
+$color_green: #678666;
+$color_beige: #F4E3D1;
+$color_brown: #7F6043;
+
+$color_blk: #333333;
+$color_base: #fff;
+
+/*add color*/
+
+/*font-family*/
+$f_sans: "Noto Sans JP", sans-serif;
+// $f_serif: "Noto Serif JP","YuMincho","Hiragino Mincho ProN","Yu Mincho","MS PMincho",serif;
+$f_serif_en: "Montserrat", sans-serif;
+
+@mixin montserrat {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;  
+  font-style: normal;
+}
+@mixin sansjp {
+  font-family: "Noto Sans JP", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+/*add font-family*/
+
+
+$fw_r: 400;
+$fw_m: 500;
+$fw_sb: 600;
+$fw_b: 700;
+
+/*text-shadow*/
+$text_shadow_b: 0px 0px 3px #000, 0px 0px 3px #000, 0px 0px 5px #000, 0px 0px 10px #000;
+$text_shadow_w: 0px 0px 3px #fff, 0px 0px 3px #fff, 0px 0px 10px #fff;
+
+/*media query break point*/
+$bpoint_sm: 768px;
+$bpoint_md: 1080px;
+$bpoint_lap: 1260px;
+
+$max_width: 1366px;
+
+$icontextbtn_width: 1660px;
+
+// mixin //////////////////////////////////////////////////
+@mixin fontsize($baseSize: 16, $mobileSize: 14) {
+  $basePx: $baseSize + px;
+  $mobilePx: $mobileSize + px;
+  $baseRem: math.div($baseSize, 10) * 1rem;
+  $mobileRem: math.div($mobileSize, 10) * 1rem;
+  font-size: $basePx;
+  @media (max-width: 768px) {
+    font-size: $mobilePx;
+  }
+  font-size: $baseRem;
+  @media (max-width: 768px) {
+    font-size: $mobileRem;
+  }
+}
+@mixin fontsize_cap {
+  @include fontsize(11);
+  letter-spacing: 0;
+  line-height: 1.4;
+  letter-spacing: 0.05em;
+  @include bp(sm){
+    @include fontsize(10);
+  }
+}
+@mixin clearfix {
+	&::after {
+		display:block;
+		clear:both;
+		content:"";
+	}
+}
+@mixin container_90{
+  width: 90%;
+  max-width: $max_width;
+  margin-left: auto;
+  margin-right: auto;
+}
+@mixin container_85{
+  width: 85%;
+  max-width: $max_width;
+  margin-left: auto;
+  margin-right: auto;
+}
+@mixin container_mx800{
+  width: 90%;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@mixin flex_center_center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex_btw_center {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/*grid settings*/
+@mixin grid_col1_null_center {
+  display: grid;
+  grid-template-columns: repeat(1,1fr);
+  align-items: center;
+}
+@mixin grid_col2_null_center {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  align-items: center;
+}
+@mixin grid_col3_null_center {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  align-items: center;
+}
+
+@mixin add_after{
+  position: relative;
+  &::after{
+      position: absolute;
+      display: block;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      content: '';
+  }
+}
+
+/* media query */
+@mixin bp($point) {
+  @if $point == sm {
+    @media only screen and (max-width:$bpoint_sm)
+    {
+      @content;
+    }
+  }
+  @else if $point == md {
+    @media only screen and (max-width:$bpoint_md)
+    {
+      @content;
+    }
+  }
+  @else if $point == lap {
+    @media only screen and (max-width:$bpoint_lap)
+    {
+      @content;
+    }
+  }
+  @else if $point == w1366 {
+    @media only screen and (max-width:$max_width)
+    {
+      @content;
+    }
+  }
+  @else if $point == wicon {
+    @media only screen and (max-width:$icontextbtn_width)
+    {
+      @content;
+    }
+  }
+}
+
+
+

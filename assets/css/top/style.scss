@@ -1,0 +1,9 @@
+@charset "UTF-8";
+
+@use "../_foundation/setting" as *;
+
+
+  p{
+    color:$color_green ;
+    font-size: 1.6rem
+  }

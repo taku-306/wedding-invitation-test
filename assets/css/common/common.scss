@@ -1,0 +1,21 @@
+@charset "UTF-8";
+
+@use "../_foundation/reset" as *;
+@use "../_foundation/setting" as *;
+@use "../_foundation/base" as *;
+
+@use "../_layout/header" as *;
+@use "../_layout/footer" as *;
+
+@use "../_object/component/text" as *;
+@use "../_object/component/btn" as *;
+@use "../_object/component/icon" as *;
+
+@use "../_object/utility/arrow" as *;
+@use "../_object/utility/display" as *;
+@use "../_object/utility/layout" as *;
+@use "../_object/utility/text" as *;
+
+main img {
+    width: 100%;
+}

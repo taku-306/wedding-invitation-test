@@ -1,0 +1,120 @@
+@use "../../_foundation/setting"as *;
+
+/* ------------------------------------------------------------
+    line
+------------------------------------------------------------ */
+.u-line {
+    display: block;
+    height: 1px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: $color_base;
+}
+
+
+/* ------------------------------------------------------------
+    block
+------------------------------------------------------------ */
+.u-container {
+    @include container_90;
+}
+
+/* ------------------------------------------------------------
+    flex layout
+------------------------------------------------------------ */
+.u-flex {
+    width: 100%;
+    display: flex;
+
+    &.flex-btw {
+        justify-content: space-between;
+    }
+
+    &.flex-btw-basis {
+        justify-content: space-between;
+
+        @include bp(sm) {
+            flex-direction: column;
+        }
+    }
+
+    &.flex-ard {
+        justify-content: space-around
+    }
+
+    &.flex-row {
+        flex-direction: row;
+    }
+
+    &.flex-row-reverse {
+        flex-direction: row-reverse;
+    }
+
+    &.flex-col {
+        flex-direction: column;
+    }
+
+    &.flex-col-reverse {
+        flex-direction: column-reverse;
+    }
+
+    &.flex-wrap {
+        flex-wrap: wrap;
+    }
+
+    @include bp(sm) {
+        &.sm_flex-row {
+            flex-direction: row;
+        }
+
+        &.sm_flex-row-reverse {
+            flex-direction: row-reverse;
+        }
+
+        &.sm_flex-col {
+            flex-direction: column;
+        }
+
+        &.sm_flex-col-reverse {
+            flex-direction: column-reverse;
+        }
+
+        &.sm_flex-wrap {
+            flex-wrap: wrap;
+        }
+    }
+}
+
+.u-img {
+    &--wide {
+        overflow: hidden;
+
+        @include bp(sm) {
+            overflow-x: scroll;
+            position: relative;
+        }
+
+        img {
+            @include bp(sm) {
+                width: 200%;
+                max-width: 200%;
+            }
+        }
+    }
+
+    &--wider {
+        img {
+            @include bp(sm) {
+                width: 300%;
+                max-width: 300%;
+            }
+        }
+    }
+
+    &--zoom {
+        @include bp(sm) {
+            position: relative;
+        }
+    }
+}

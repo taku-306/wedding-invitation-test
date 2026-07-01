@@ -1,0 +1,59 @@
+@use "../../_foundation/setting" as *;
+.u-arw {
+	&--r {
+		display: inline-block;
+		vertical-align: middle;
+		color: currentColor;
+		line-height: 1;
+		position: relative;
+		width: 1em;
+		height: 0.1em;
+		background: currentColor;
+        transform: rotate(315deg) translateY(2px);
+		&::before {
+			content: '';
+			width: 0.65em;
+			height: 0.65em;
+			border: 0.1em solid currentColor;
+			border-left: 0;
+			border-bottom: 0;
+			transform: rotate(45deg) translateY(0px);
+			transform-origin: top right;
+			position: absolute;
+			top: 50%;
+			right: -0.08em;
+			box-sizing: border-box;
+		}
+	}
+	&--ku {
+		display: inline-block;
+		vertical-align: middle;
+		color: currentColor;
+		line-height: 1;
+		position: relative;
+		width: 1em;
+		height: 1em;
+		transform: translateX(-25%) rotate(45deg);
+		&::before,
+		&::after {
+			content: '';
+			position: absolute;
+			background: currentColor;
+			border-radius: 0.1em;
+		}
+		  
+		&::before {
+			top: 0;
+			left: 0;
+			right: 0;
+			height: 0.1em;
+		}
+		  
+		&::after {
+			top: 0;
+			right: 0;
+			bottom: 0;
+			width: 0.1em;
+		}
+	}
+}
