@@ -14,7 +14,7 @@
 .rsvp-card {
     max-width: 640px;
     margin: 0 auto;
-    padding: 70px 40px;
+    padding: 70px 0px;
     border-radius: 320px 320px 0 0;
     position: relative;
     z-index: 1;
@@ -39,7 +39,7 @@
 
 .rsvp-card__lead {
     color: #6f826a;
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     line-height: 2.2;
     letter-spacing: .08em;
 

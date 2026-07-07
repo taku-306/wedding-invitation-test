@@ -1908,7 +1908,7 @@
 }
 .p-footer__inner:after {
   position: absolute;
-  top: 31%;
+  top: 20%;
   left: 50%;
   width: 100%;
   height: 0%;
@@ -1919,15 +1919,15 @@
 }
 @media (max-width: 767px) {
   .p-footer__inner:after {
-    top: 17%;
+    top: 10%;
   }
 }
 .is-onscreen .p-footer__inner:after {
-  height: 69%;
+  height: 100%;
 }
 @media (max-width: 767px) {
   .is-onscreen .p-footer__inner:after {
-    height: 83%;
+    height: 100%;
   }
 }
 
@@ -2264,7 +2264,7 @@
 .rsvp-card {
   max-width: 640px;
   margin: 0 auto;
-  padding: 70px 40px;
+  padding: 70px 0px;
   border-radius: 320px 320px 0 0;
   position: relative;
   z-index: 1;
@@ -2285,7 +2285,7 @@
 
 .rsvp-card__lead {
   color: #6f826a;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   line-height: 2.2;
   letter-spacing: 0.08em;
 }
