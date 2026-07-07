@@ -1863,6 +1863,7 @@
     border-top-right-radius: 1400px;
     border-top-left-radius: 1400px;
     padding: 0 9.9vw 16rem;
+    overflow: hidden;
 
     @include bp(md) {
         padding: 0 6.9vw 16rem;
