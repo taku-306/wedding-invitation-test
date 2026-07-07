@@ -956,7 +956,7 @@
 .p-product__lead {
   font-size: 0.8666667vw;
   line-height: 1.85;
-  color: #678666;
+  color: red;
   font-weight: 500;
 }
 @media (max-width: 767px) {

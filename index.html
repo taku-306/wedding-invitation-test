@@ -879,9 +879,11 @@
                         <div class="p-heading p-heading--product js-onscreen">
                             PHOTOS
                         </div>
+                        <!--
                         <div class="p-copy js-onscreen">
                             日常を映画に、暮らしをピクニックに。<br>​思い描いた​憧れを、​ひと​つずつ​叶えていく​家。
                         </div>
+                        -->
                         <div class="p-product__sns">
                             <a href="http://instagram.com/explore/tags/taku&chi" target="_blank" rel="noopener noreferrer" class="p-product__sns-item">
                                 <div>
@@ -926,7 +928,6 @@
                                                 <p>挙式は親族のみのご列席となります<br>神社境内にてご自由にご見学いただけますので&nbsp;お時間のある方はぜひお立ち寄りください<br>どうぞお気遣いなくお気持ちのままにお越しください<br>
                                                     <br>
                                                     なお&nbsp;境内には日陰が少ないため&nbsp;暑く感じられる場合がございます&nbsp;熱中症には十分お気をつけいただき&nbsp;ご無理のない範囲でご見学いただけますと幸いです&nbsp;
-                                                
                                                 </p>
                                             </div>
                                         </div>
@@ -944,14 +945,13 @@
                                                     ・JR山手線「目黒駅」<br>
                                                     ・南北線・都営三田線 「白金台駅」<br>
                                                     ・東急目黒線 「目黒駅」<br>
+                                                    上記、各駅より徒歩約7分
                                                 </p>
                                             </div>
                                             <div class="p-product__recipe-textarea">
-                                                <div class="p-product__recipe-copy">ACCESS</div>
+                                                <div class="p-product__recipe-copy">DRESS CODE</div>
                                                 <p>
-                                                    ・JR山手線「目黒駅」<br>
-                                                    ・南北線・都営三田線 「白金台駅」<br>
-                                                    ・東急目黒線 「目黒駅」<br>
+                                                    ・フォーマル
                                                 </p>
                                             </div>
                                         </div>
@@ -965,15 +965,15 @@
                                 <div class="p-product__ttl js-onscreen">EVENT 9.23</div>
                                 <div class="p-product__copy js-onscreen">披露宴<br>Reception</div>
                                 <p class="p-product__lead js-onscreen u-pc-block">
-                                    <span>〒141-0021<br>白金迎賓館　アートグレイスクラブ　東京都品川区上大崎1丁目1−9<br>TEL：03-5475-3388 </span>
+                                    <span>〒141-0021<br>白金迎賓館　アートグレイスクラブ　東京都品川区上大崎1丁目1−9<br>TEL：<i class="tell">03-5475-3388</i> </span>
                                 </p>
                             </div>
                             <div class="p-product__img js-onscreen"
                                 style="background-image: url(./assets/img/top/eve_03.jpg);"></div>
                                 <div class="p-product__textarea js-onscreen">
                                     <p class="p-product__lead js-onscreen u-sp-block">
-                                        <span>〒141-0021<br>白金迎賓館　アートグレイスクラブ　東京都品川区上大崎1丁目1−9<br>TEL：03-5475-3388 </span>
-                                    </p>
+                                        <span>〒141-0021<br>白金迎賓館　アートグレイスクラブ　東京都品川区上大崎1丁目1−9<br>TEL：<i class="tell">03-5475-3388</i></span>
+                                     </p>
                                     <div class="p-product__recipe js-onscreen">
                                         <div class="p-product__recipe-inner">
                                             <div class="p-product__recipe-ttl js-onscreen">
@@ -1011,8 +1011,14 @@
                                                             ・千代田線　赤坂駅・日比谷線・大江戸線　六本木駅<br>
                                                             ・南北線　六本木一丁目駅・銀座線　溜池山王駅<br>
                                                             ・都バス　アークヒルズ前<br>
-                                                            上記、各駅より徒歩8分<br>
+                                                            上記、各駅より徒歩約8分<br>
                                                         </p>
+                                                            <div class="p-product__recipe-textarea">
+                                                            <div class="p-product__recipe-copy">DRESS CODE</div>
+                                                            <p>
+                                                                ・フォーマル
+                                                            </p>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1139,6 +1145,30 @@
                                         <input name="bot-field">
                                     </label>
                                 </p>
+
+                                                                <!-- 出欠 -->
+                                <div class="form__group">
+                                    <!--
+                                    <label class="form__label">
+                                        ご出欠
+                                        <span>Attendance</span>
+                                    </label>-->
+                                    <div class="form__radio">
+                                
+                                        <input type="radio" id="attendance_yes" name="attendance" value="出席" required>
+                                
+                                        <label for="attendance_yes">
+                                            ご出席
+                                        </label>
+                                
+                                        <input type="radio" id="attendance_no" name="attendance" value="欠席">
+                                
+                                        <label for="attendance_no">
+                                            ご欠席
+                                        </label>
+                                
+                                    </div>
+                                </div>
 
                                 <!-- 名前 -->
 

@@ -905,7 +905,10 @@
     line-height: 1.85;
     color: #678666;
     font-weight: 500;
-    
+    i{
+        color: #678666;
+        font-style: normal;
+    }
 
     @media (max-width: 767px) {
         font-size: 3vw;
@@ -914,6 +917,9 @@
         padding: 155px 7.6vw 0;
         margin-top: -130px;
         border-bottom: 1px solid #678666;
+        i{
+        color: #f4e3d0;
+        }
     }
 
     span {
