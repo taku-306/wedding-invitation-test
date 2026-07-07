@@ -402,6 +402,7 @@ a:focus {
   left: 3.3vw;
   pointer-events: none;
   opacity: 0;
+  width: 12rem;
 }
 @media only screen and (max-width: 767px) {
   .l-gnav-logo {
@@ -417,7 +418,7 @@ a:focus {
   }
 }
 .l-gnav-logo img {
-  filter: brightness(0);
+  filter: brightness(100);
 }
 .is-gnav-open .l-gnav-logo {
   opacity: 1;

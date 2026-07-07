@@ -951,7 +951,7 @@ $(function () {
         gsap.to('.p-product__list', {
             duration: 1,
             // x: "-315%",
-            x: "-420%",
+            x: "-245%",
             scrollTrigger: {
                 trigger: '.p-product__space',
                 start: "top center",

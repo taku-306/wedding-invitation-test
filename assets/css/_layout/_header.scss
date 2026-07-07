@@ -122,6 +122,7 @@
     left: 3.3vw;
     pointer-events: none;
     opacity: 0;
+    width: 12rem;
 
     @include bp(sm) {
         top: 40px;
@@ -136,7 +137,7 @@
         }
     }
     img {
-        filter: brightness(0);
+        filter: brightness(100);
     }
 
     .is-gnav-open & {

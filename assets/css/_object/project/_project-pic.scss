@@ -19,7 +19,7 @@
 }
 
 .p-heading--product {
-    font-family: "Marcellus", serif;
+    @include runtime;
     text-align: center;
     margin-bottom: 25px;
     color: #678666;
@@ -813,10 +813,42 @@
 .p-product__main {
     position: relative;
 }
+.p-product__map {
+    aspect-ratio: 16/9;
+    height: 50%;
+            @include bp(sm) {
+            aspect-ratio: 1 / 1;
+            height: auto;
+        }
+    iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+
+    }
+}
+.p-product__sns {
+    display: block;
+    padding-bottom: 2rem;
+    @include bp(sm) {
+        background-color: #F4E3D1;
+    }
+    &-item {
+        display: block;
+        max-width: 30rem;
+        width: 90%;
+        margin: 2rem auto 0;
+    }
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+}
 
 .p-product__ttl {
     font-size: 3.5vw;
-    font-family: "Marcellus", serif;
+    @include runtime;
     color: #678666;
     margin-bottom: 4.5rem;
     opacity: 0;
@@ -1010,7 +1042,7 @@
     }
 
     @media (max-width: 767px) {
-        padding: 4rem 0;
+        padding: 2rem 0 4rem;
         border-top-right-radius: 0px;
         display: block;
     }
@@ -1102,6 +1134,12 @@
     &.mod--1 {
         display: block;
     }
+    &.mod--map {
+        margin-top: 0;
+        @include bp(sm) {
+            margin-top: 3rem;
+        }
+    }
 
     &.is-onscreen {
         opacity: 1;
@@ -1117,12 +1155,18 @@
     @media (max-width: 767px) {
         font-size: 1.6rem;
     }
+    &.u-mrgt {
+        margin-top: 1rem;
+    }
 }
 
 .p-product__recipe-textarea {
     width: 70%;
     .mod--1 & {
         width: 100%;
+    }
+    .mod--map & {
+        margin-top: 1rem;
     }
 
     p {
@@ -1132,6 +1176,12 @@
 
         @media (max-width: 767px) {
             font-size: 1.4rem;
+        }
+        .mod--map & {
+            font-size: 1.4rem;
+            @media (max-width: 767px) {
+                font-size: 1.2rem;
+            }
         }
     }
 }
@@ -1558,6 +1608,10 @@
         font-size: 1.6rem;
         font-weight: 600;
         color: #678666;
+        @include bp(sm) {
+            font-size: 1.4rem;
+            line-height: 1.5;
+        }
     }
 }
 
@@ -1830,7 +1884,7 @@
 
     &:after {
         position: absolute;
-        top: 50%;
+        top: 31%;
         left: 50%;
         width: 100%;
         height: 0%;
@@ -1844,7 +1898,7 @@
         }
 
         .is-onscreen & {
-            height: 50%;
+            height: 69%;
 
             @media (max-width: 767px) {
                 height: 83%;
