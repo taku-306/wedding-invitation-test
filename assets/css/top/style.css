@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @font-face {
   font-family: "Runtime";
   src: url("../../fonts/RuntimeRegular-m2Odx.otf") format("opentype");
@@ -956,8 +957,12 @@
 .p-product__lead {
   font-size: 0.8666667vw;
   line-height: 1.85;
-  color: red;
+  color: #678666;
   font-weight: 500;
+}
+.p-product__lead i {
+  color: #678666;
+  font-style: normal;
 }
 @media (max-width: 767px) {
   .p-product__lead {
@@ -967,6 +972,9 @@
     padding: 155px 7.6vw 0;
     margin-top: -130px;
     border-bottom: 1px solid #678666;
+  }
+  .p-product__lead i {
+    color: #f4e3d0;
   }
 }
 .p-product__lead span {
@@ -2369,23 +2377,74 @@
   min-height: 130px;
 }
 
-.form__agree {
-  margin-top: 60px;
-}
-
-.checkbox {
+.form__radio {
   display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  color: #6f826a;
-  font-size: 0.95rem;
-  line-height: 2;
+  gap: 24px;
+  margin-top: 12px;
 }
-.checkbox input {
+.form__radio label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  color: #6f826a;
+  font-size: 1.6rem;
+}
+.form__radio input[type=radio] {
   width: 18px;
   height: 18px;
-  margin-top: 6px;
-  flex-shrink: 0;
+  accent-color: #8b6a48;
+}
+
+.form__radio {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+  /* チェックマーク */
+  /* 選択時 */
+}
+.form__radio input[type=radio] {
+  display: none;
+}
+.form__radio label {
+  position: relative;
+  flex: 1;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #d8d8d8;
+  border-radius: 12px;
+  background: #fff;
+  color: #6f826a;
+  font-size: 1.6rem;
+  font-weight: 600;
+  cursor: pointer;
+  user-select: none;
+  transition: 0.25s;
+}
+.form__radio label:hover {
+  border-color: #8b6a48;
+  background: #faf6f2;
+}
+.form__radio label::before {
+  content: "✓";
+  position: absolute;
+  left: 18px;
+  opacity: 0;
+  transform: scale(0.6);
+  font-size: 1.8rem;
+  font-weight: bold;
+  transition: 0.2s;
+}
+.form__radio input[type=radio]:checked + label {
+  background: #8b6a48;
+  border-color: #8b6a48;
+  color: #fff;
+}
+.form__radio input[type=radio]:checked + label::before {
+  opacity: 1;
+  transform: scale(1);
 }
 
 .form__button {
